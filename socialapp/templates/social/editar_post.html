@@ -1,0 +1,16 @@
+{% extends 'social/new_post.html' %}
+{% block title %}Editar Postagem{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="text-uppercase text-primary">Editar Postagem</h1>
+            <p class="lead text-muted">Atualize o conteúdo da sua postagem</p>
+        </div>
+
+        <!-- O restante do conteúdo é herdado de new_post.html -->
+        {{ block.super }}
+    </div>
+</section>
+{% endblock %}

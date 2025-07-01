@@ -1,0 +1,55 @@
+{% extends 'social/base.html' %}
+{% block title %}Postagens{% endblock %}
+
+{% block content %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/static/assets/img/post-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Todas as Postagens</h1>
+                    <span class="subheading">Conhecimento compartilhado pela comunidade</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% for post in posts %}
+            <div class="post-preview">
+                <a href="#">
+                    <h2 class="post-title">{{ post.titulo_postagem }}</h2>
+                    <h3 class="post-subtitle">{{ post.conteudo_postagem|truncatewords:20 }}</h3>
+                </a>
+                <p class="post-meta">
+                    Postado por
+                    <a href="#!">{{ post.autor_postagem }}</a>
+                    em {{ post.data_postagem|date:"d/m/Y" }}
+                </p>
+            </div>
+            <hr class="my-4"/>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% if user.is_authenticated %}
+<div class="fixed-action-btn">
+    <a href="{% url 'new_post' %}" class="btn btn-primary btn-floating btn-lg"
+       style="position: fixed; bottom: 30px; right: 30px;">
+        <i class="fas fa-plus"></i>
+    </a>
+</div>
+{% endif %}
+{% if user.is_authenticated %}
+<div class="text-center mt-5">
+    <a href="{% url 'new_post' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Adicionar Nova Postagem
+    </a>
+</div>
+{% endif %}
+{% endblock %}

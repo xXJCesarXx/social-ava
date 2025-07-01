@@ -1,0 +1,64 @@
+{% extends 'social/base.html' %}
+{% load widget_tweaks %}
+{% block title %}Nova Postagem{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">NOVA POSTAGEM</h2>
+                    <p class="mb-0">Compartilhe conhecimento com a comunidade</p>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!-- Título -->
+                        <div class="mb-4">
+                            <label for="titulo" class="form-label fw-bold">Título</label>
+                            {% render_field form.titulo_postagem class="form-control" placeholder="Digite um título claro e objetivo" %}
+                        </div>
+
+                        <!-- Conteúdo -->
+                        <div class="mb-4">
+                            <label for="conteudo" class="form-label fw-bold">Conteúdo</label>
+                            {% render_field form.conteudo_postagem class="form-control" rows="5" placeholder="Desenvolva aqui o conteúdo da sua postagem" %}
+                        </div>
+
+                        <!-- Autor e Data -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label for="autor" class="form-label fw-bold">Autor</label>
+                                {% render_field form.autor_postagem class="form-control" %}
+                            </div>
+                            <div class="col-md-6">
+                                <label for="data" class="form-label fw-bold">Data</label>
+                                {% render_field form.data_postagem class="form-control" type="datetime-local" %}
+                            </div>
+                        </div>
+
+                        <!-- Avaliação -->
+                        <div class="mb-4">
+                            <label for="avalia" class="form-label fw-bold">Avaliação</label>
+                            {% render_field form.id_avalia class="form-select" %}
+                            <div class="form-text">Selecione o nível de relevância desta postagem</div>
+                        </div>
+
+                        <!-- Botões -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'index' %}" class="btn btn-secondary">
+                                <i class="fas fa-times me-1"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i> Salvar Postagem
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

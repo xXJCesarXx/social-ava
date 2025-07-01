@@ -1,0 +1,102 @@
+{% extends 'social/base.html' %}
+{% load static %}
+{% block title %}Sobre Nós{% endblock %}
+
+{% block content %}
+<!-- Page Header-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1 class="masthead-heading text-uppercase mb-0">Sobre o StudyClass</h1>
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <p class="masthead-subheading font-weight-light mb-0">Conheça nossa plataforma de aprendizado colaborativo</p>
+    </div>
+</header>
+
+<!-- Sobre Section-->
+<section class="page-section mb-0" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary"><i class="fas fa-bullseye me-2"></i>Nossa Missão</h3>
+                        <p class="card-text">
+                            O StudyClass foi desenvolvido para facilitar o aprendizado colaborativo entre estudantes,
+                            proporcionando um ambiente onde o conhecimento pode ser compartilhado de forma eficiente
+                            e acessível.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary"><i class="fas fa-users me-2"></i>Para Quem?</h3>
+                        <p class="card-text">
+                            Nossa plataforma é ideal para estudantes de todos os níveis que desejam compartilhar
+                            conhecimentos, tirar dúvidas e colaborar no processo de aprendizagem de maneira
+                            interativa e dinâmica.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary"><i class="fas fa-history me-2"></i>Nossa História</h3>
+                        <p class="card-text">
+                            Desenvolvido como projeto acadêmico pelo 5º período do curso de Licenciatura em Computação
+                            do IFTO Campus Araguatins, o StudyClass nasceu da necessidade de criar uma ferramenta
+                            que facilitasse a interação e o compartilhamento de conhecimento entre os alunos.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary"><i class="fas fa-rocket me-2"></i>Futuro</h3>
+                        <p class="card-text">
+                            Planejamos continuar desenvolvendo novas funcionalidades para tornar o StudyClass uma
+                            plataforma ainda mais completa, com ferramentas de avaliação, fóruns temáticos e
+                            integração com outras plataformas educacionais.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equipe -->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mt-5 mb-4">Nossa Equipe</h2>
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{% static 'assets/img/1.png' %}" alt="Membro da equipe">
+                    <div class="card-body">
+                        <h4 class="card-title">STEVE</h4>
+                        <p class="card-text text-muted">Desenvolvedor Front-end</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="https://source.unsplash.com/random/300x200/?programmer" alt="Membro da equipe">
+                    <div class="card-body">
+                        <h4 class="card-title">Aluno 2</h4>
+                        <p class="card-text text-muted">Desenvolvedor Back-end</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="https://source.unsplash.com/random/300x200/?teache" alt="Membro da equipe">
+                    <div class="card-body">
+                        <h4 class="card-title">Rogerio Pereira de Sousa</h4>
+                        <p class="card-text text-muted">Orientador</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

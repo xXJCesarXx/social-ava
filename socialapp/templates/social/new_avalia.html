@@ -1,0 +1,75 @@
+{% extends 'social/base.html' %}
+{% block title %}Avaliações{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="text-uppercase text-primary">Gerenciar Avaliações</h1>
+            <p class="lead text-muted">Defina os critérios de avaliação para as postagens</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow mb-5">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">{% if form.instance.id_avalia %}Editar{% else %}Adicionar{% endif %} Avaliação</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="valor_avalia" class="form-label text-primary fw-bold">Status da Avaliação</label>
+                                {{ form.valor_avalia }}
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-1"></i> Salvar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Avaliações -->
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Tipos de Avaliação Cadastrados</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-primary">
+                                <th>ID</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ava in avas %}
+                            <tr>
+                                <td>{{ ava.id_avalia }}</td>
+                                <td>{{ ava.valor_avalia }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="{% url 'editar_avalia' ava.id_avalia %}" class="btn btn-sm btn-warning">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <a href="{% url 'deleta_avalia' ava.id_avalia %}" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i> Excluir
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

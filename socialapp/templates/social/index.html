@@ -1,0 +1,74 @@
+{% extends 'social/base.html' %}
+{% block content %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/static/assets/img/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Study Class</h1>
+                    <span class="subheading">Plataforma de Aprendizado Colaborativo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% if user.is_authenticated %}
+<div class="container text-center mb-5">
+    <a href="{% url 'new_post' %}" class="btn btn-primary btn-lg">
+        <i class="fas fa-plus-circle"></i> Criar Nova Postagem
+    </a>
+</div>
+{% endif %}
+<!-- Botões de Navegação -->
+<div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                <a href="{% url 'sobre' %}" class="btn btn-primary btn-lg px-4 gap-3">Sobre Nós</a>
+                <a href="{% url 'postar' %}" class="btn btn-outline-secondary btn-lg px-4">Postagens</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'new_avalia' %}" class="btn btn-success btn-lg px-4">Avaliações</a>
+                <a href="{% url 'logout' %}" class="btn btn-danger btn-lg px-4">Sair</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-warning btn-lg px-4">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            {% for postagem in postagens %}
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">{{ postagem.titulo_postagem }}</h2>
+                    <h3 class="post-subtitle">{{ postagem.conteudo_postagem }}</h3>
+                </a>
+                <p class="post-meta">
+                    Postado por
+                    <a href="#!">{{ postagem.autor_postagem }}</a>
+                    em {{ postagem.data_postagem }}
+                </p>
+
+                {% if user.is_authenticated %}
+                <div class="d-flex justify-content-end mb-4 gap-2">
+                    <a href="{% url 'editar_post' postagem.id_postagem %}" class="btn btn-sm btn-warning">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                    <a href="{% url 'deleta_post' postagem.id_postagem %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash"></i> Excluir
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            <hr class="my-4"/>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

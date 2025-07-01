@@ -1,0 +1,16 @@
+{% extends 'social/new_avalia.html' %}
+{% block title %}Editar Avaliação{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="text-uppercase text-primary">Editar Critério de Avaliação</h1>
+            <p class="lead text-muted">Atualize o status desta avaliação</p>
+        </div>
+
+        <!-- O restante do conteúdo é herdado de new_avalia.html -->
+        {{ block.super }}
+    </div>
+</section>
+{% endblock %}

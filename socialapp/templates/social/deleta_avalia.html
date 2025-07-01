@@ -1,0 +1,48 @@
+{% extends 'social/base.html' %}
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="text-uppercase text-danger">Confirmar Exclusão</h1>
+            <p class="lead">Você está prestes a excluir um critério de avaliação</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card border-danger shadow">
+                    <div class="card-header bg-danger text-white">
+                        <h4 class="mb-0">Atenção!</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="alert alert-danger">
+                                <h5 class="alert-heading">Tem certeza que deseja excluir esta avaliação?</h5>
+                                <p class="mb-0">Esta ação não pode ser desfeita. Todas as postagens associadas a este critério serão atualizadas.</p>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">ID: {{ ava.id_avalia }}</h5>
+                                    <p class="card-text">Status: {{ ava.valor_avalia }}</p>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="{% url 'new_avalia' %}" class="btn btn-outline-secondary me-md-2">
+                                    <i class="fas fa-times me-1"></i> Cancelar
+                                </a>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-trash me-1"></i> Confirmar Exclusão
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
